@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <title>Вход</title>
+        {% load staticfiles %}
+        <link rel="stylesheet" href="{% static 'auth/auth.css' %}" type="text/css" >
+        <link href="https://fonts.googleapis.com/css?family=Playfair+Display+SC|Slabo+27px&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <form>
+            <input type="text" id="login" name="login" placeholder="Логин">
+            <input type="password" name="password" id="password" placeholder="Пароль">
+            <button id="enter" type="submit" name="submit">
+                <span>Вход</span>
+            </button>
+            <a id="singin" onclick="window.location.href='registration'">
+                <span>Регистрация</span>
+            </a>
+        </form>
+    </body>
+</html>
