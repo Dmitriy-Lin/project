@@ -1,23 +1,20 @@
-html{
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    margin: 0;
-
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%
 }
 
-body{
-    background: linear-gradient(45deg, #EECFBA, #C5DDE8);
-}
 
-form{
-    margin: 0;
+.formAuth{
     position: absolute;
     top: 40%;
     left: 40%;
+    border-radius: 5px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)
 }
 
-form input{
+.formAuth input{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -31,6 +28,7 @@ form input{
 #password {
     height: 50px;
     padding: 0 10px;
+    margin: 0 auto;
     border: none;
     background: rgba(255,255,255,0.8);
     box-shadow:
@@ -40,7 +38,6 @@ form input{
     color: #0e0e0e;
     text-shadow: 0 1px 2px rgba(0,0,0,0.3);
     font-size: 20px;
-    margin: 0;
 }
 
 #login {

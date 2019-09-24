@@ -1,10 +1,102 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    Form registration
-</body>
-</html>
+{% extends 'wrapper.html' %}
+
+        {% block title %}
+		<title>Регистрация</title>
+		{% load staticfiles %}
+		<link type="text/css" href="{% static 'bootstrap.css' %}" rel="stylesheet">
+		<link type="text/css" href="{% static 'reg/reg.css' %}" rel="stylesheet">
+		{% endblock title%}
+
+        {% block nav %}
+            <nav>
+                <a onclick="window.location.href='/'">Вход</a>
+            </nav>
+        {% endblock nav %}
+		{% block content %}
+		<div class='formReg'>
+			<form class='needs-validation' novalidate>
+				<div class='form-group'>
+					<label for='name'>Введите Ваше имя</label>
+					<input type='text' class='form-control' id='name' placeholder='Имя' required>
+				</div>	
+				<div class='form-group'>
+					<label for='lname'>Ведиет Вашу фамилию</label>
+					<input type='text' class='form-control' id='lname' placeholder='фамилия' required>
+				</div>
+				<div class='form-group'>
+					<label for='exampleInputEmail1'>Email</label>
+					<input type='email' class='form-control' id='exampleInputEmail1' aria-describedby='emailHelp' placeholder='Введите Email' required>
+				</div>
+				<div class='form-group'>
+					<label for='birth'>Год рождения</label>
+					<input type='date' class='form-control' id='birth' placeholder='Год рождения' required>
+				</div>
+				<div class='form-group'>
+					<label for='country'>Страна</label>
+					<input type='text' class='form-control' id='country' placeholder='Страна' required>
+				</div>
+				<div class='form-group'>
+					<label for='city'>Город</label>
+					<input type='text' class='form-control' id='city' placeholder='Город' required>
+				</div>
+				<div class='form-group'>
+					<label for='adress'>Адрес</label>
+					<input type='text' class='form-control' id='adress' placeholder='Адрес' required>
+				</div>
+				<div class='form-group'>
+					<label for='tel'>Номер телефона</label>
+					<input type='text' class='form-control' id='tel' placeholder='Телефон' required>
+				</div>
+				<div class='form-group'>
+					<label>Пол</label>
+					<div class='form-check'>
+						<input type='radio' class='form-check-input' id='man' name='sex' value='nam' required>
+						<label class='form-check-label' for='man'>Мужской</label>
+					</div>
+					<div class='form-check'>
+						<input type='radio' class='form-check-input' id='woman' name='sex' value='woman' required>
+						<label class='form-check-label' for='woman'>Женский</label>
+					</div>
+				</div>
+				<div class='form-group'>
+					<label for='pass'>Придумайте пароль</label>
+					<input type='password' class='form-control' name='pass' id='password' placeholder='Пароль' aria-describedby='passHelp' required>
+					<small	id='passHelp' class='form-text text muted'>
+						Пароль должен быть не менее 8-12 символов в длинну
+					</small>
+				</div>
+				<button type='submit' class='btn btn-success'>Подтвердить</button>
+				<a class='btn btn-primary' onclick="window.location.href='/'" role='button'>Отмена</a>
+			</form>
+		</div>
+		{% endblock content %}
+
+<script>
+	(function (){
+		'use strict';
+		window.addEventListener('load', function(){
+			var forms = document.getElementsByClassName('needs-validation');
+			var validation = Array.prototype.filter.call(forms, function(form){
+				form.addEventListener('submit', function(event){
+					if (form.checkValidity() === false){
+						event.preventDefault();
+						event.stopPropagation();
+					}
+					form.classList.add('was-validated');
+				}, false);
+			});
+		}, false);
+	})();
+</script>
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
