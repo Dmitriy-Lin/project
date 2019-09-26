@@ -1,0 +1,52 @@
+﻿{% extends 'wrapper.html' %}
+
+	{% block title%}
+	<title>Профиль</title>
+	{% load staticfiles %}
+	<script src="{% static 'jquery.min.js' %}"></script>
+	<script src="{% static 'bootstrap.js' %}"></script>
+	<link href="{% static 'userprofile/homepage.css' %}" rel="stylesheet">
+	{% endblock title%}
+
+	{% block content %}
+	<div class='container'>
+		<div class='avatar'></div>
+		<div class='info'>
+			<h2> Фамилия Имя </h2>
+			<h3> Номер телефона </h3>
+			<h3> Email </h3>
+			<h5> статус/о себе/краткая информ </h5>
+		</div>
+	</div>
+	<div class="container" id='page'>
+		<div class="row">
+			<div class="col-3" id="colNav">
+				<div class="nav flex-column nav-pills" id="tab" role="tablist" aria-orientation="vertical">
+				  <a class="nav-link active" id="home-tab" data-toggle="pill" href="#home" role="tab" aria-controls="home" aria-selected="true">Блог</a>
+				  <a class="nav-link" id="profile-tab" data-toggle="pill" href="#messages" role="tab" aria-controls="profile" aria-selected="false">Сообщения</a>
+				  <a class="nav-link" id="messages-tab" data-toggle="pill" href="#profile" role="tab" aria-controls="messages" aria-selected="false">Профиль</a>
+				  <a class="nav-link" id="settings-tab" data-toggle="pill" href="#settings" role="tab" aria-controls="settings" aria-selected="false">Настройки</a>
+				</div>
+			<div class="container" id="preview">
+				<span>Друзья</span>
+				<ul class="list-friend">
+					<li class="listFriend">1</li>
+					<li class="listFriend">2</li>
+					<li class="listFriend">3</li>
+					<li class="listFriend">4</li>
+					<li class="listFriend">5</li>
+					<li class="listFriend">6</li>
+				</ul>
+			</div>
+			</div>
+			<div class="col-9">
+				<div class="tab-content" id="v-pills-tabContent">
+				  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">Блог</div>
+				  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">Информация профиля</div>
+				  <div class="tab-pane fade" id="messages" role="tabpanel" aria-labelledby="messages-tab">Сообщения</div>
+				  <div class="tab-pane fade" id="settings" role="tabpanel" aria-labelledby="settings-tab">Настройки</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	{% endblock content%}
