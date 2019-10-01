@@ -1,5 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
+from django.contrib.auth import logout
 
 
-def user_profile(request):
-    return render(request, 'userprofile/homepage.html')
+def logout_view(request):
+    logout(request)
+    return redirect("/")

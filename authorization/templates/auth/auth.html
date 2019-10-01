@@ -9,8 +9,13 @@
 
         {% block content%}
         <div class="form">
-            <form class="formAuth">
-                <input type="text" id="login" name="login" placeholder="Логин">
+            <form class="formAuth" method="POST" action="login/">
+            {% csrf_token %}
+            {% if error %}
+                <div class="error">Something went wrong</div>
+            {% endif %}
+
+                <input type="text" id="login" name="username" placeholder="Логин">
                 <input type="password" name="password" id="password" placeholder="Пароль">
                 <button id="enter" type="submit" name="submit">
                     <span>Вход</span>

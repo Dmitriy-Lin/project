@@ -7,7 +7,11 @@
 	<script src="{% static 'bootstrap.js' %}"></script>
 	<link href="{% static 'userprofile/homepage.css' %}" rel="stylesheet">
 	{% endblock title%}
-
+        {% block nav %}
+            <nav>
+                <a onclick="window.location.href='logout/'">Выход</a>
+            </nav>
+        {% endblock nav %}
 	{% block content %}
 	<div class='container'>
 		<div class='avatar'></div>

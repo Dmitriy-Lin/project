@@ -37,9 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'authorization',
-    'registration',
-    'userprofile'
+    'authorization.apps.AuthorizationConfig',
+    'registration.apps.RegistrationConfig',
+    'userprofile.apps.UserprofileConfig'
 ]
 
 MIDDLEWARE = [
@@ -89,6 +89,8 @@ DATABASES = {
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
 
+AUTH_USER_MODEL = 'registration.User'
+
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -104,6 +106,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+INCORRECT_ATTEMPTS_LIMIT = 3
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
@@ -127,4 +130,6 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
-MEDIA_URL = ''
+ADMIN_MEDIA_PREFIX = '/static/'
+MEDIA_ROOT = 'uploads/'
+MEDIA_URL = '/uploads/'
