@@ -18,7 +18,8 @@ def login_view(request):
         )
         if user is not None:
             login(request, user)
-            return render(request, 'userprofile/homepage.html')
+            current_user = request.user
+            return redirect("user", current_user.id)
         else:
             try:
                 user = User.objects.get(username=username)
@@ -31,7 +32,3 @@ def login_view(request):
             return render(request, "auth/auth.html", context={
                 "error": True
             })
-
-
-def start_page(request):
-    return render(request, "auth/auth.html",)

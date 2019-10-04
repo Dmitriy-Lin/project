@@ -15,7 +15,7 @@
 		{% block content %}
 
 		<div class='formReg'>
-			<form class='needs-validation' method="POST" action="/registration" novalidate>
+			<form class='needs-validation' method="POST" action="registration" novalidate>
 				{% csrf_token %}
 
 				{% for fields in form %}
@@ -53,17 +53,3 @@
 			})();
 		</script>
 		{% endblock content %}
-
-
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	

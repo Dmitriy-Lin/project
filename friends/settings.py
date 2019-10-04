@@ -37,9 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'authorization.apps.AuthorizationConfig',
-    'registration.apps.RegistrationConfig',
-    'userprofile.apps.UserprofileConfig'
+    'authorization',
+    'registration',
+    'userprofile'
 ]
 
 MIDDLEWARE = [
@@ -80,7 +80,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'USER': 'kage',
-        'PASSWORD': 52412630,
+        'PASSWORD': 123456,
         'NAME': 'friends',
     },
 }

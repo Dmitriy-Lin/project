@@ -9,7 +9,7 @@
 
         {% block content%}
         <div class="form">
-            <form class="formAuth" method="POST" action="login/">
+            <form class="formAuth" method="POST" action="/">
             {% csrf_token %}
             {% if error %}
                 <div class="error">Something went wrong</div>
@@ -20,7 +20,7 @@
                 <button id="enter" type="submit" name="submit">
                     <span>Вход</span>
                 </button>
-                <a id="singin" onclick="window.location.href='registration'">
+                <a id="singin" href="{% url "registration"%}">
                     <span>Регистрация</span>
                 </a>
             </form>
