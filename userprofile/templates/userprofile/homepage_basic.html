@@ -1,0 +1,54 @@
+{% extends 'wrapper.html' %}
+
+	{% block title%}
+  {% block name_page %}
+  {% endblock %}
+	{% load staticfiles %}
+	<script src="{% static 'jquery.min.js' %}"></script>
+	<script src="{% static 'bootstrap.js' %}"></script>
+	<link href="{% static 'userprofile/homepage.css' %}" rel="stylesheet">
+	{% endblock title%}
+        {% block nav %}
+            <nav>
+                <a href="{% url "logout"%}">Выход</a>
+            </nav>
+        {% endblock nav %}
+	{% block content %}
+  {% block user_info %}
+  {% endblock user_info %}
+    <div class="container" id='page'>
+      <div class="row">
+        <div class="col-3" id="colNav">
+          <div class="nav flex-column" id="tab" role="tablist" aria-orientation="vertical">
+						{% if request.user.is_authenticated %}
+          		{% block link %}
+          		{% endblock link %}
+							<a class="nav-link" id="home-tab" href="{% url "redirect_user"%}">Блог</a>
+							<a class="nav-link" id="profile-tab" href="#profile">Профиль</a>
+							<a class="nav-link" id="messages-tab" href="{% url "index" %}">Сообщения</a>
+							<a class="nav-link" id="friends-tab" href="{% url "list_friends" %}">Друзья</a>
+							<a class="nav-link" id="users-tab" href="{% url "list_users" %}">Пользователи</a>
+						{% endif %}
+          </div>
+          <div class="container" id="preview">
+            <span>Друзья</span>
+            <ul class="list-friend">
+              <li class="listFriend">1</li>
+              <li class="listFriend">2</li>
+              <li class="listFriend">3</li>
+              <li class="listFriend">4</li>
+              <li class="listFriend">5</li>
+              <li class="listFriend">6</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-9">
+          <div class="tab-content" id="v-pills-tabContent">
+            {% block data %}
+            {% endblock data %}
+          </div>
+        </div>
+      </div>
+    </div>
+
+  {% endblock content%}

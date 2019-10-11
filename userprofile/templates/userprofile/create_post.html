@@ -2,7 +2,7 @@
 
     {% block content %}
         <div>
-            <form method="POST" action="post_create">
+            <form method="POST" action="" >
                 {% csrf_token %}
                 {% if error %}
                     <div class="error">Something went wrong</div>
