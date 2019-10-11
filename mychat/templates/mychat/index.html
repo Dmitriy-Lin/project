@@ -1,0 +1,13 @@
+{% extends 'userprofile/homepage_basic.html' %}
+
+  {% block name_page %}
+    <meta charset="utf-8"/>
+    <title>Chat Rooms</title>
+  {% endblock %}
+  {% block data%}
+    {% for chat in chat_room %}
+        <h5>{{ chat.id }}</h5>
+        <h5>{{ chat.members.all }}</h5>
+    <a id="room-name" href="{{ chat.id }}">{{ chat.id }}</a>
+    {% endfor %}
+  {% endblock%}

@@ -1,55 +1,31 @@
-﻿{% extends 'wrapper.html' %}
+﻿{% extends 'userprofile/homepage_basic.html' %}
 
-	{% block title%}
-	<title>Профиль</title>
-	{% load staticfiles %}
-	<script src="{% static 'jquery.min.js' %}"></script>
-	<script src="{% static 'bootstrap.js' %}"></script>
-	<link href="{% static 'userprofile/homepage.css' %}" rel="stylesheet">
-	{% endblock title%}
-        {% block nav %}
-            <nav>
-                <a href="{% url "logout"%}">Выход</a>
-            </nav>
-        {% endblock nav %}
-	{% block content %}
-	<div class='container' id="user_info">
-		<div class='avatar'></div>
-		<div class='info' id="info">
-			<h2> {{ user_data.first_name }} {{user_data.last_name }} </h2>
-			<h3>{{ user_data.number_phone }} </h3>
-			<h3> {{ user_data.email }} </h3>
-		</div>
-	</div>
-	<div class="container" id='page'>
-		<div class="row">
-			<div class="col-3" id="colNav">
-				<div class="nav flex-column nav-pills" id="tab" role="tablist" aria-orientation="vertical">
-				  <a class="nav-link active" id="home-tab" data-toggle="pill" href="#home" role="tab" aria-controls="home" aria-selected="true">Блог</a>
-				  <a class="nav-link" id="profile-tab" data-toggle="pill" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Профиль</a>
-				  <a class="nav-link" id="messages-tab" data-toggle="pill" href="#messages" role="tab" aria-controls="messages" aria-selected="false">Сообщения</a>
-				  <a class="nav-link" id="settings-tab" data-toggle="pill" href="#settings" role="tab" aria-controls="settings" aria-selected="false">Настройки</a>
-				</div>
-			<div class="container" id="preview">
-				<span>Друзья</span>
-				<ul class="list-friend">
-					<li class="listFriend">1</li>
-					<li class="listFriend">2</li>
-					<li class="listFriend">3</li>
-					<li class="listFriend">4</li>
-					<li class="listFriend">5</li>
-					<li class="listFriend">6</li>
-				</ul>
-			</div>
-			</div>
-			<div class="col-9">
-				<div class="tab-content" id="v-pills-tabContent">
-				  {% include "userprofile/post.html"%}
-					<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">Профиль</div>
-				  <div class="tab-pane fade" id="messages" role="tabpanel" aria-labelledby="messages-tab">Сообщения</div>
-				  <div class="tab-pane fade" id="settings" role="tabpanel" aria-labelledby="settings-tab">Настройки</div>
-				</div>
+{% block name_page %}
+	<meta charset="utf-8"/>
+	<title>user profile</title>
+{% endblock %}
+{% block link %}
+{% if user_id != request.user.id %}
+	<form class="formFriends" method="POST">
+		{% csrf_token %}
+		<input type="hidden" id="owner" name="owner" value={{user_id}}>
+		<button id="enter" type="submit" name="submit">
+			<span>Добавить в друзья</span>
+		</button>
+	</form>
+	<a class="nav-link" href='new_chat/{{ user_id }}'>Написать сообщение</a>
+{% endif %}
+{% endblock link %}
+{% block user_info %}
+		<div class='container' id="user_info">
+			<div class='avatar'></div>
+			<div class='info' id="info">
+				<h2>{{ user_data.first_name }}{{user_data.last_name }}</h2>
+				<h3>{{ user_data.number_phone }}</h3>
+				<h3>{{ user_data.email }}</h3>
 			</div>
 		</div>
-	</div>
-	{% endblock content%}
+{% endblock %}
+{% block data %}
+	{% include 'userprofile/post.html' %}
+{% endblock %}

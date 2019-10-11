@@ -19,7 +19,7 @@ def login_view(request):
         if user is not None:
             login(request, user)
             current_user = request.user
-            return redirect("user", current_user.id)
+            return redirect("redirect_user")
         else:
             try:
                 user = User.objects.get(username=username)
