@@ -1,0 +1,11 @@
+{% extends "wrapper.html" %}
+
+{% block title %}Аккаунт активирован{% endblock %}
+
+{% block content %}
+    <h1>Аккаунт активирован</h1>
+    <div class="big-card info">
+        Ваш аккаунт успешно активирован
+        <a href="{% url 'redirect_user' %}">Перейти в профиль</a>
+    </div>
+{% endblock %}

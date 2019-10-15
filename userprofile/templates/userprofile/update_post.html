@@ -1,0 +1,16 @@
+{% extends 'wrapper.html' %}
+
+    {% block content %}
+    <div>
+        <form method="POST" action="{% url 'post_update' id=obj.id %}" >
+            {% csrf_token %}
+            {% if form.error %}
+                <div class="error">Something went wrong</div>
+            {% endif %}
+            {{form}}
+            <button id="enter" type="submit" name="submit">
+                <span>Опубликовать</span>
+            </button>
+        </form>
+    </div>
+    {% endblock %}

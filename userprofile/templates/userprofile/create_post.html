@@ -2,12 +2,12 @@
 
     {% block content %}
         <div>
-            <form method="POST" action="" >
+            <form method="POST" action="{% url "post_create" %}" >
                 {% csrf_token %}
-                {% if error %}
+                {% if form.error %}
                     <div class="error">Something went wrong</div>
                 {% endif %}
-                <input type="text" name="body_post" id="body" placeholder="напишите свой пост">
+                {{form}}
                 <button id="enter" type="submit" name="submit">
                     <span>Опубликовать</span>
                 </button>

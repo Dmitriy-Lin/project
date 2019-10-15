@@ -24,10 +24,11 @@
           		{% block link %}
           		{% endblock link %}
 							<a class="nav-link" id="home-tab" href="{% url "redirect_user"%}">Блог</a>
-							<a class="nav-link" id="profile-tab" href="#profile">Профиль</a>
+							<a class="nav-link" id="profile-tab" href="{% url "profile_update" id=request.user.id %}">Профиль</a>
 							<a class="nav-link" id="messages-tab" href="{% url "index" %}">Сообщения</a>
 							<a class="nav-link" id="friends-tab" href="{% url "list_friends" %}">Друзья</a>
 							<a class="nav-link" id="users-tab" href="{% url "list_users" %}">Пользователи</a>
+							<a class="nav-link" id="users-tab" href="{% url "list_photo" %}">Фотографии</a>
 						{% endif %}
           </div>
           <div class="container" id="preview">

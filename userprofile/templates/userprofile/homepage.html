@@ -18,7 +18,9 @@
 {% endblock link %}
 {% block user_info %}
 		<div class='container' id="user_info">
-			<div class='avatar'></div>
+			<div class='avatar'>
+					<img id="avatar" src="{{ user_data.avatar.url }}">
+			</div>
 			<div class='info' id="info">
 				<h2>{{ user_data.first_name }}{{user_data.last_name }}</h2>
 				<h3>{{ user_data.number_phone }}</h3>

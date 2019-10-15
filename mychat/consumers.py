@@ -58,13 +58,4 @@ class ChatConsumer(AsyncWebsocketConsumer):
     def create_chat_message(self, author, chat_id, message):
         user = User.objects.get(pk=author)
         chat = Chat.objects.get(pk=chat_id)
-        Message.objects.create(chat=chat,author=user,message=message)
-
-    @database_sync_to_async
-    def get_chat_message(self, chat_id):
-        message_list = Message.objects.filter(chat_id=chat_id)
-        author=[el.author for el in message_list]
-        print(author)
-        message_author=[el for el in message_list]
-        print(message_author)
-        return message_list
+        Message.objects.create(chat=chat, author=user, message=message)

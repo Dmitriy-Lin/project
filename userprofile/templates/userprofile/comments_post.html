@@ -1,0 +1,35 @@
+{% extends 'userprofile/homepage_basic.html' %}
+
+  {% block name_page %}
+    <meta charset="utf-8"/>
+    <title>Список пользователей</title>
+  {% endblock %}
+  {% block data%}
+    <div class='container' id="user_info">
+        <div class="card border-dark mb-3" id="card_post">
+          <div class="card-header">{{user_data.username}}</div>
+          <div class="card-body text-dark">
+            <p class="card-text">{{post.body}}</p>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">{{post.created}}</small>
+          </div>
+        </div>
+        {% for i in comments %}
+        <div class="card-body text-dark">
+            <p class="card-text">{{i.body}}</p>
+            <p class="card-text">{{i.owner.username}}</p>
+        </div>
+        {% endfor %}
+        <form method="POST" action="{% url 'post_comment' id=post.id %}" >
+            {% csrf_token %}
+            {% if form.error %}
+                <div class="error">Something went wrong</div>
+            {% endif %}
+            {{form}}
+            <button id="enter" type="submit" name="submit">
+                <span>Опубликовать</span>
+            </button>
+        </form>
+    </div>
+  {% endblock%}
