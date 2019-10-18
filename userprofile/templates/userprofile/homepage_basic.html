@@ -1,0 +1,71 @@
+{% extends 'wrapper.html' %}
+
+	{% block title%}
+        {% block name_page %}
+        {% endblock %}
+        {% load staticfiles %}
+        <script src="{% static 'jquery.min.js' %}"></script>
+        <script src="{% static 'bootstrap.js' %}"></script>
+        <link type="text/css" href="{% static 'bootstrap.css' %}" rel="stylesheet">
+        <link type="text/css" href="{% static 'userprofile/homepage.css' %}" rel="stylesheet">
+        <link type="text/css" href="{% static 'userprofile/create_post.css' %}" rel="stylesheet">
+        <link type="text/css" href="{% static 'mychat/room.css' %}" rel="stylesheet">
+        <link type="text/css" href="{% static 'userprofile/photo.css' %}" rel="stylesheet">
+        <link type="text/css" href="{% static 'userprofile/update_profile.css' %}" rel="stylesheet">
+        <link type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+        <link type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+
+
+
+	{% endblock title%}
+    {% block nav %}
+        <nav id="logout">
+            <a href="{% url 'logout' %}">Выход</a>
+        </nav>
+    {% endblock nav %}
+	{% block content %}
+        {% block user_info %}
+        {% endblock user_info %}
+        <div class="container" id='page'>
+            <div class="row">
+                <div class="col-3" id="colNav">
+                    <div class="nav flex-column nav-pills" id="tab" role="tablist" aria-orientation="vertical">
+                        {% if request.user.is_authenticated %}
+                            {% block link %}
+                            {% endblock link %}
+                            <a class="btn btn-outline-primary" id="home-tab" href="{% url 'redirect_user' %}">Блог</a>
+                            <a class="btn btn-outline-primary" id="profile-tab" href="{% url 'profile_update' id=request.user.id %}">Профиль</a>
+                            <a class="btn btn-outline-primary" id="messages-tab" href="{% url 'index' %}">Сообщения</a>
+                            <a class="btn btn-outline-primary" id="friends-tab" href="{% url 'list_friends' %}">Контакты</a>
+                            <a class="btn btn-outline-primary" id="users-tab" href="{% url 'list_users' %}">Пользователи</a>
+                            <a class="btn btn-outline-primary" id="photo-tab" href="{% url 'list_photo' %}">Фотографии</a>
+                        {% endif %}
+                    </div>
+                    <div class="container" id="preview">
+                        <ul class="list-friend">
+                            {% for el in list_friends %}
+                                <li class="listFriend">
+                                    <a href={{el.owner.id}}><img id="avatar" src="{{el.owner.avatar.url}}"></a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-9">
+                    {% block data %}
+                    {% endblock data %}
+                </div>
+             </div>
+        </div>
+    {% endblock content%}
+    {% block footer %}
+        <footer>
+            <div>
+                <h6>Курсовой проект для "it-academy"</h6>
+                <h5>Автор: Линевич Д.О."</h5>
+                <h5>Email: kage726@gmail.com"</h5>
+            </div>
+        </footer>
+    {% endblock %}

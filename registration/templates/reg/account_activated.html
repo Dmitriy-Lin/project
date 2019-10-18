@@ -1,0 +1,10 @@
+{% extends "wrapper.html" %}
+
+{% block title %}<title>Аккаунт активирован</title>{% endblock %}
+
+{% block content %}
+    <div class="alert alert-success" role="alert">
+        Ваш аккаунт успешно активирован
+        <a href="{% url 'login' %}">Перейти в профиль</a>
+    </div>
+{% endblock %}

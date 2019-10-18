@@ -1,0 +1,76 @@
+#card_post{
+    width: 90%;
+    margin: 20px 50px 1rem 50px;
+    box-shadow: 0 7px 14px rgba(0,0,0,0.25), 0 5px 5px rgba(0,0,0,0.22);
+}
+
+.card{
+    margin-bottom: 10px;
+}
+
+#owner_post{
+	font-size: 10px;
+	color: black;
+	text-decoration:none;
+}
+
+#owner_post h6{
+	font-size: 2em;
+	display: inline-block;
+	width: 50%;
+}
+
+#update{
+	font-size: 20px;
+	color: green;
+	margin-right: 15px;
+	margin-left: 30%;
+	text-decoration:none;
+}
+#delete{
+	font-size: 20px;
+	color: red;
+	text-decoration:none;
+}
+
+.list-group-item img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+	border-radius: 25px;
+}
+
+a.create_button {
+  background-color: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+    transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+        border-radius: 4px;
+    color: #555555;
+    display:inline-block;
+        width:120px;
+    font-size: 14px;
+        text-align:center;
+    line-height: 20px;
+    margin-bottom: 10px;
+    padding: 4px 6px;
+    vertical-align: middle;
+        text-decoration:none;
+}
+a.create_button:hover, a.create_button:focus {
+   border-color: rgba(82, 168, 236, 0.8);
+   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(82, 168, 236, 0.6);
+   outline: 0 none;
+}
+
+.card-body img{
+    height:150px;
+    object-fit: cover;
+    margin-right: 20px;
+}
+
+.list-group::-webkit-scrollbar { display: none }
+ul.list-group{
+    overflow: scroll;
+    height: 650px;
+}

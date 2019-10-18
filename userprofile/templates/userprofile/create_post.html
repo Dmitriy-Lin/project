@@ -1,0 +1,17 @@
+{% extends 'userprofile/homepage_basic.html' %}
+
+    {% block name_page %}
+        <meta charset="utf-8"/>
+        <title>Добавить пост</title>
+    {% endblock %}
+    {% block data %}
+        <form method="POST" action="{% url 'post_create' %}" enctype="multipart/form-data" >
+          {% block create_update %}
+            {% include 'userprofile/create_update.html' %}
+          {% endblock %}
+        </form>
+    <script>
+        $('#textarea1').val('New Text');
+        M.textareaAutoResize($('#textarea1'));
+    </script>
+    {% endblock %}
