@@ -6,11 +6,11 @@
   {% endblock %}
   {% block data%}
     <div class='container' id="user_info">
-        {% for i in list_users %}
-            {% if request.user.id != i.id %}
-                <a href="{{i.id}}">
-                <h2>{{ i.first_name }} {{i.last_name }}</h2>
-            {% endif %}
+        {% for i in user %}
+          {% if i.id != request.user.id%}
+            <a href="{{i.id}}">
+            <h2>{{ i.first_name }} {{i.last_name }}</h2>
+          {% endif %}
         {% endfor %}
     </div>
   {% endblock%}

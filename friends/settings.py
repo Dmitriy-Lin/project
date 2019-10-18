@@ -90,12 +90,11 @@ CHANNEL_LAYERS = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'USER': 'kage',
-        'PASSWORD': 123456,
+        'USER': 'dmitriy',
+        'PASSWORD': 52412630,
         'NAME': 'friends',
     },
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -108,6 +107,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'OPTIONS': {
+            'min_length': 8,
+        }
     },
     {
         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
@@ -141,6 +143,13 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
-ADMIN_MEDIA_PREFIX = '/static/'
-MEDIA_ROOT = 'uploads/'
+ADMIN_MEDIA_PREFIX = '/static/admin'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
 MEDIA_URL = '/uploads/'
+
+EMAIL_HOST = 'smtp.mailgun.org'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'postmaster@sandboxb997a30e0ef4454da90ea59b11dfdb6f.mailgun.org'
+EMAIL_HOST_PASSWORD = 'a44b71093c0f230c0a6be1564d3bb5ec-9c988ee3-c9fb308e'
+DEFAULT_FROM_EMAIL = 'admin@friends.com'

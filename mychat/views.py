@@ -32,7 +32,7 @@ def get_chat_room(request):
                     })
 
 
-def room(request,room_name):
+def room(request, room_name):
     chat = Chat.objects.get(pk=room_name)
     if request.user in chat.members.all():
         return list(request, chat.id)

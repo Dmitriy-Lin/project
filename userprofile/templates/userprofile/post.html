@@ -1,8 +1,24 @@
 {% load staticfiles %}
 <link href="{% static 'userprofile/post.css' %}" rel="stylesheet">
 
+    <a class='btn btn-primary' href="{% url 'post_create' %}" role="button">
+        <span>Создать</span>
+    </a>
     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="profile-tab">
       {% for post in post_list  %}
+            <a class='btn btn-primary' href="{% url 'post_update' id=post.id %}" role="button">
+                <span>Изменить</span>
+            </a>
+            <a class='btn btn-primary' href="{% url 'post_comment' id=post.id %}" role="button">
+                <span>comments</span>
+            </a>
+        <form class="formFriends" method="POST" action="delete_post">
+          {% csrf_token %}
+          <input type="hidden" id="post_id" name="post_id" value={{post.id}}>
+          <button id="enter" type="submit" name="submit">
+            <span>Удалить</span>
+          </button>
+        </form>
         <div class="card border-dark mb-3" id="card_post">
           <div class="card-header">{{user_data.username}}</div>
           <div class="card-body text-dark">

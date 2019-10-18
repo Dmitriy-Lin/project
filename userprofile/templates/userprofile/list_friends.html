@@ -6,9 +6,9 @@
   {% endblock %}
   {% block data%}
     <div class='container' id="user_info">
-        {% for i in list_friends %}
-        <a href="{{i.owner.id}}">
-        <h2>{{ i.owner.first_name }} {{i.owner.last_name }}</h2>
+        {% for i in friends %}
+          <a href="{{i.owner.id}}">
+          <h2>{{ i.owner.first_name }} {{i.owner.last_name }}</h2>
         {% endfor %}
     </div>
   {% endblock%}
