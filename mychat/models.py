@@ -1,6 +1,5 @@
 from django.db import models
-from django.conf import settings
-from django.urls import reverse
+
 from registration.models import User
 
 
@@ -15,7 +14,7 @@ class Message(models.Model):
     pub_date = models.DateTimeField(auto_now=True)
 
     class Meta:
-        ordering=['pub_date']
+        ordering = ['pub_date']
 
     def __str__(self):
         return self.message

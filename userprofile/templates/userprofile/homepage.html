@@ -5,25 +5,31 @@
 	<title>user profile</title>
 {% endblock %}
 {% block link %}
-{% if user_id != request.user.id %}
-	<form class="formFriends" method="POST">
-		{% csrf_token %}
-		<input type="hidden" id="owner" name="owner" value={{user_id}}>
-		<button id="enter" type="submit" name="submit">
-			<span>Добавить в друзья</span>
-		</button>
-	</form>
-	<a class="nav-link" href='new_chat/{{ user_id }}'>Написать сообщение</a>
-{% endif %}
+
 {% endblock link %}
 {% block user_info %}
 		<div class='container' id="user_info">
-			<div class='avatar'></div>
-			<div class='info' id="info">
-				<h2>{{ user_data.first_name }}{{user_data.last_name }}</h2>
-				<h3>{{ user_data.number_phone }}</h3>
-				<h3>{{ user_data.email }}</h3>
+			<div class='avatar'>
+					<img id="avatar" src="{{ user_data.avatar.url }}">
 			</div>
+			<div class='info' id="info">
+				<h2>{{ user_data.first_name }} {{user_data.last_name }}</h2>
+				<small class="text-muted">Номер телефона</small>
+				<h5>{{ user_data.number_phone }}</h5>
+				<small class="text-muted" style="display: block;">Адрес email</small>
+				<h6>{{ user_data.email }}</h6>
+			</div>
+			{% if user_id != request.user.id %}
+				<form class="formFriends" method="POST">
+					{% csrf_token %}
+					<input type="hidden" id="owner" name="owner" value={{user_id}}>
+					<button class="btn btn-primary" id="enter" type="submit" name="submit">
+						<span>Добавить в список контактов</span>
+					</button>
+				</form>
+				<a class="btn btn-primary" href='new_chat/{{ user_id }}'>Написать сообщение</a>
+				<a class="btn btn-primary" href="{% url 'other_user_photo' id=user_id %}">Фотографии</a>
+			{% endif %}
 		</div>
 {% endblock %}
 {% block data %}

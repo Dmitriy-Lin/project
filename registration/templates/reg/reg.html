@@ -3,6 +3,8 @@
         {% block title %}
 		<title>Регистрация</title>
 		{% load staticfiles %}
+		<script src="{% static 'jquery.min.js' %}"></script>
+		<script src="{% static 'bootstrap.js' %}"></script>
 		<link type="text/css" href="{% static 'bootstrap.css' %}" rel="stylesheet">
 		<link type="text/css" href="{% static 'reg/reg.css' %}" rel="stylesheet">
 		{% endblock title%}
@@ -15,24 +17,47 @@
 		{% block content %}
 
 		<div class='formReg'>
-			<form class='needs-validation' method="POST" action="registration" novalidate>
+			<form class='needs-validation' method="POST" action="registration" enctype="multipart/form-data" novalidate>
 				{% csrf_token %}
-
-				{% for fields in form %}
-					{% if fields == form.man or  fields == form.woman %}
-						<div class='form-check' id="form-check">
-							<label style="margin-right:30px">{{fields.label}}</label>
-							{{fields}}
-						</div>
-					{% else %}
-						<div class='form-group'>
-							<label>	{{fields.label}}</label>
-							{{fields}}
-						</div>
-					{% endif %}
-				{% endfor %}
-				<button type='submit' class='btn btn-success'>Подтвердить</button>
-				<a class='btn btn-primary' onclick="window.location.href='/'" role='button'>Отмена</a>
+                <div class="form-group">
+                    <label>Имя пользователя</label>
+                        {{form.username}}
+                    <label>Ваш email адрес</label>
+                        {{form.email}}
+                    <label>Пароль</label>
+                        {{form.password}}
+                        <small id="passwordHelp" class="text-danger">
+                            Пароль должен быть не менее 8 символов в длинну,
+                            содержать буквы верхнего и нижнего регистра.
+                        </small>
+                    <label>Имя</label>
+                        {{form.first_name}}
+                    <label>Фамилия</label>
+                        {{form.last_name}}
+                    <label>Город</label>
+                        {{form.city}}
+                    <label>Страна</label>
+                        {{form.country}}
+                    <label>Адрес</label>
+                        {{form.address}}
+                    <label>Дата рождения</label>
+                        {{form.birth}}
+                    <label>Пол</label>
+                    <div class='form-check' id="form-man">
+                        <label style="margin-right:30px">Мужской</label>
+                        {{form.man}}
+                    </div>
+                    <div class='form-check' id="form-woman">
+                        <label style="margin-right:30px">Женский</label>
+                        {{form.woman}}
+                    </div>
+                    <label>Номер телефона</label>
+                        {{form.number_phone}}
+                    <label>Аватарка</label>
+                        {{form.avatar}}
+                </div>
+                <button type='submit' class='btn btn-success'>Подтвердить</button>
+                <a class='btn btn-primary' onclick="window.location.href='/'" role='button'>Отмена</a>
 			</form>
 		</div>
 		<script>
@@ -53,3 +78,10 @@
 			})();
 		</script>
 		{% endblock content %}
+    {% block footer %}
+        <footer>
+            <h6>Курсовой проект для "it-academy"</h6>
+            <h5>Автор: Линевич Д.О."</h5>
+            <h5>Email: kage726@gmail.com"</h5>
+        </footer>
+    {% endblock %}

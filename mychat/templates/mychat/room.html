@@ -1,23 +1,50 @@
 {% extends 'userprofile/homepage_basic.html' %}
 
-  {% block name_page %}
-    <meta charset="utf-8"/>
-    <title>Chat Rooms</title>
-  {% endblock %}
-{% block data %}
-  <div id='new-message'>
-    {% for el in list_message %}
-      <h5>{{ el }}</h5><span>{{ el.author }}</span>
-    {% endfor %}
-  </div>
-    <input id="chat-message-input" type="text" size="100"/><br/>
-    <input id="chat-message-submit" type="button" value="Send"/>
-</body>
-<body><h2 id= "user" value="{{request.user.id}}">{{request.user.username}}{{room_name_json}}</h2></body>
+    {% block name_page %}
+        <meta charset="utf-8"/>
+        <title>Chat Rooms</title>
+    {% endblock %}
+    {% block data %}
+    <div class="container">
+        <div class="messaging">
+            <div class="inbox_msg">
+                <div class="mesgs">
+                    <div id='new-message' class="msg_history">
+                        {% for el in list_message %}
+                            {% if el.author.id != request.user.id %}
+                                <div class="incoming_msg">
+                                <div class="incoming_msg_img"> <img src="{{ el.author.avatar.url }}" alt="sunil"> </div>
+                                <div class="received_msg">
+                                    <div class="received_withd_msg">
+                                        <p>{{ el }}</p>
+                                        <span class="time_date">{{ el.pub_date }}</span></div>
+                                    </div>
+                                </div>
+                            {% elif el.author.id == request.user.id %}
+                                <div class="outgoing_msg">
+                                    <div class="sent_msg">
+                                        <p>{{ el }}</p>
+                                        <span class="time_date">{{ el.pub_date }}</span>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="type_msg">
+                        <div class="input_msg_write">
+                            <input id="chat-message-input" type="text" class="write_msg" /><br/>
+                            <button class="msg_send_btn" id="chat-message-submit" type="button" value="Send"/><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 <script>
+        $('#new-message').scrollTop($('#new-message')[0].scrollHeight);
     var roomName = {{ room_name_json }};
-    var author = {{ user }}
+    var author = {{ user }};
 
     var chatSocket = new WebSocket(
         'ws://' + window.location.host +
@@ -27,7 +54,18 @@
         var data = JSON.parse(e.data);
         var message = data.message['message'];
         var author_message = data.message['author'];
-        $('#new-message').append('<h5>'+message+'</h5>'+'<span>'+author_message+'</span>');
+        var author_avatar = data.message['avatar'];
+        var author_time = data.message['time'];
+        console.log(author_message)
+        console.log(author)
+        if (author_message != author){
+          var mess = '<div class="incoming_msg"><div class="incoming_msg_img"><img src='+author_avatar+' alt="sunil"></div><div class="received_msg"><div class="received_withd_msg"><p>'+message+'</p><span class="time_date">'+author_time+'</span></div></div></div>'
+        };
+        if (author_message === author){
+          var mess = '<div class="outgoing_msg"><div class="sent_msg"><p>'+message+'</p><span class="time_date">'+author_time+'</span> </div></div>'
+        };
+        $('#new-message').append(mess);
+        $('#new-message').scrollTop($('#new-message')[0].scrollHeight);
     };
 
     chatSocket.onclose = function(e) {
