@@ -1,0 +1,35 @@
+{% extends 'wrapper.html' %}
+    {% block title %}
+        <title>Вход</title>
+        {% load staticfiles %}
+        <link rel="stylesheet" href="{% static 'auth/auth.css' %}" type="text/css" >
+        <link href="https://fonts.googleapis.com/css?family=Playfair+Display+SC|Slabo+27px&display=swap" rel="stylesheet">
+    {% endblock title %}
+
+
+    {% block content%}
+        <div class="form">
+            <form class="formAuth" method="POST" action="/">
+                {% csrf_token %}
+                {% if error %}
+                    <div class="error">Something went wrong</div>
+                {% endif %}
+
+                <input type="text" id="login" name="username" placeholder="Логин">
+                <input type="password" name="password" id="password" placeholder="Пароль">
+                <button class="btn btn-primary" id="enter" type="submit" name="submit">
+                    <span>Вход</span>
+                </button>
+                <a class="btn btn-primary" id="singin" href="{% url 'registration'%}">
+                    <span>Регистрация</span>
+                </a>
+            </form>
+        </div>
+    {% endblock %}
+    {% block footer %}
+    <footer>
+        <h6>Курсовой проект для "it-academy"</h6>
+        <h5>Автор: Линевич Д.О."</h5>
+        <h5>Email: kage726@gmail.com"</h5>
+    </footer>
+    {% endblock %}

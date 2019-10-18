@@ -1,0 +1,47 @@
+{% extends 'userprofile/homepage_basic.html' %}
+
+  {% block name_page %}
+    {% load staticfiles %}
+      <link href="{% static 'userprofile/post.css' %}" rel="stylesheet">
+    <meta charset="utf-8"/>
+    <title>Комментарии</title>
+  {% endblock %}
+  {% block data%}
+      <div class="card border-dark mb-3" id="card_post">
+        <div class="card-body text-dark" style="display: flex;">
+          {% if post.media %}
+              <img src="{{post.media.url}}">
+          {% endif %}
+          <p class="card-text" style="max-width:400px;">{{post.body}}</p>
+        </div>
+      </div>
+      <div class="card-body text-dark">
+        <ul class="list-group list-group-flush" style="height:200px;">
+            {% for i in comments %}
+                <li class="list-group-item">
+                    <img src="{{i.owner.avatar.url }}"  class="mr-3" alt="...">
+                    <div class="media-body">
+                        <a href= "{% url 'user_page' id=i.owner.id %}" style="text-decoration:none">
+                            <h5 class="mt-0 mb-1">{{ i.owner.first_name }} {{i.owner.last_name }}</h5>
+                        </a>
+                    </div>
+                    <p class="card-text">{{i.body}}</p>
+                </li>
+            {% endfor %}
+        </ul>
+      </div>
+      <form method="POST" action="{% url 'post_comment' id=post.id %}" >
+          {% csrf_token %}
+          {% if form.error %}
+              <div class="error">Something went wrong</div>
+          {% endif %}
+          <div class="page">
+              <label class="field a-field a-field_a1">
+                  {{ form.body }}
+              </label>
+          </div>
+          <button class="btn btn-outline-primary" id="enter" type="submit" name="submit">
+              <span>Опубликовать</span>
+          </button>
+      </form>
+  {% endblock%}

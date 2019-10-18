@@ -1,0 +1,39 @@
+.formReg{
+	width: 50%;
+	padding: 40px;
+	margin: 15px auto;
+	background-color: #EBEBEB;
+	border-radius: 5px;
+	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)
+}
+.form-control:focus {
+	box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+@media(max-width: 400px){
+	.formReg{
+		width: 100%;
+		padding: 40px;
+		margin: 15px auto;
+	}
+}
+
+#form-check {
+    position: relative;
+    display: inline-block;
+    padding-left: 1.25rem;
+}
+
+.form-group label{
+    display: flex;
+    margin-bottom: 0.1rem;
+}
+
+.form-group input{
+    margin-bottom: 2px;
+}
+
+#form-check {
+    position: relative;
+    display: flex;
+}
