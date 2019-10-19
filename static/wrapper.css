@@ -53,8 +53,8 @@ header nav a:hover{
     display: box;
     cursor: pointer;
 	text-decoration:none;
-	border-color: #2F4F4F;
-	color:green;
+	border-color: #ff6b00;
+	color: #ff6b00;
  }
 
 header h1::before{
