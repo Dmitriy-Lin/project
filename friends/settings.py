@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'channels',
+    'django-dia',
+    'django_extensions',
     'authorization.apps.AuthorizationConfig',
     'registration.apps.RegistrationConfig',
     'userprofile.apps.UserprofileConfig',
@@ -150,6 +152,6 @@ MEDIA_URL = '/uploads/'
 EMAIL_HOST = 'smtp.mailgun.org'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = os.environ['EMAIL_HOST_USER']
-EMAIL_HOST_PASSWORD =os.environ['EMAIL_HOST_PASSWORD']
+EMAIL_HOST_USER = 'postmaster@sandboxec6bdee956204207b5e014c47accf4f6.mailgun.org'
+EMAIL_HOST_PASSWORD = '9be17ab967f2329c92191c7163fc687f-9c988ee3-b9551bb0'
 DEFAULT_FROM_EMAIL = 'admin@friends.com'

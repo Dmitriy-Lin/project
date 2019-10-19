@@ -34,7 +34,8 @@ class PostForm(forms.ModelForm):
                             "placeholder": "Ваш пост",
                             "cols": "40",
                             "rows": "5"
-            })
+            }),
+            'media': forms.FileInput()
         }
 
 
@@ -49,7 +50,7 @@ class CommentForm(forms.ModelForm):
             "body": forms.TextInput(attrs={
                             "class": "field__input a-field__input",
                             "placeholder": "Ваш комментарий",
-                            "style":"height: 40px",
+                            "style": "height: 40px",
             })
         }
 

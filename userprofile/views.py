@@ -88,7 +88,7 @@ def userprofile(request, id=None):
             else:
                 Friends.objects.create(owner=owner, user=user).save()
     return render(request, "userprofile/homepage.html", context={
-                                                "post_list": post_list,
+                                                "post_list": post_list[::-1],
                                                 "user_data": user_data,
                                                 "user_id": id,
                                                 "list_friends": user_friends
@@ -111,3 +111,7 @@ def list_photo(request):
                                                     "list_photo": list_photo,
                                                     "form": form
             })
+
+
+def redirect_search(request, id):
+    return redirect("user_page", id)

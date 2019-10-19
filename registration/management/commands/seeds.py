@@ -39,7 +39,7 @@ class Command(BaseCommand):
                     city=friend['city'],
                     country='Беларусь',
                     number_phone=friend['id'],
-                    avatar=friend['img']
+                    avatar=friend['avatar']
                 )
             )
             self.stdout.write(f"Friends {friend['first_name']} processed")
