@@ -56,12 +56,15 @@
 .info h2{
 	padding: 20px 0 0 0;
 	margin: 0 auto;
+	font-family: 'Lobster', cursive;
 }
 
 .info h3,
+.info h6,
 .info h5{
 	padding: 0;
 	margin: 0 auto;
+	font-family: 'Lobster', cursive;
 }
 
 .row{
