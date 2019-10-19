@@ -36,7 +36,7 @@
 }
 
 .list-photo img{
-    border: 5px double #bcddff;
+    border: 2px solid #191818;
     width: 300px;
     height: 300px;
     object-fit: cover;

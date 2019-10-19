@@ -9,10 +9,11 @@
 
     {% block content%}
         <div class="form">
+            <img src="/uploads/img/notebook.png" style="position: absolute; top: 35%; width: 300px; left: 20%;">
             <form class="formAuth" method="POST" action="/">
                 {% csrf_token %}
                 {% if error %}
-                    <div class="error">Something went wrong</div>
+                    <div class="alert alert-secondary" role="alert">Something went wrong</div>
                 {% endif %}
 
                 <input type="text" id="login" name="username" placeholder="Логин">

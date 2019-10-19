@@ -9,7 +9,7 @@
         <div id="carouselExampleControls" style="display:none" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 {% for photo in list_photo  %}
-                    {% if photo == list_photo.first %}
+                    {% if photo == list_photo.0 %}
                         <div class="carousel-item active">
                             <img src="{{ photo.photo.url }}" class="d-block w-100" alt="...">
                         </div>

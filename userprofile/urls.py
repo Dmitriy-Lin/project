@@ -9,6 +9,7 @@ urlpatterns = [
     path('user/profile_update/<int:id>', views.UpdateProfile.as_view(), name="profile_update"),
     path('user/list_users', views.ListUser.as_view(), name="list_users"),
     path('user/list_users/search', views.search, name="list_users_search"),
+    path('user/list_users/<int:id>', views.redirect_search, name="redirect_users_search"),
     path('user/<int:id>/photo', views.OtherUserPhoto.as_view(), name="other_user_photo"),
     path('user/post_create', views.CreatePost.as_view(), name="post_create"),
     path('user/post/<int:id>', views.UpdatePost.as_view(), name="post_update"),
